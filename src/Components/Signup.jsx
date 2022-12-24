@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Signin() {
+function Signup() {
 
     const navigate = useNavigate()
 
@@ -13,8 +13,8 @@ function Signin() {
     useEffect(() => {
         const ls = localStorage.getItem("users")
         const loggedIn = JSON.parse(ls)
-        if (loggedIn != null) {
-            navigate("/")
+        if (loggedIn == null) {
+            navigate("/signin")
         }
     }, [])
 
@@ -60,11 +60,15 @@ function Signin() {
                         }
                         <div className="card">
                             <div className="card-header text-center">
-                                <strong>User Sign in</strong>
+                                <strong>User Sign Up</strong>
                             </div>
                             <div className="card-body">
                                 <div className="row">
-                                    <div className="form-group">
+                                <div className="form-group">
+                                        <label className="form-label">Name</label>
+                                        <input type="text" className="form-control" onClick={(e) => { enterEmail(e.target.value) }} placeholder="Enter Name" required="" />
+                                    </div>
+                                    <div className="form-group mt-3">
                                         <label className="form-label">Email</label>
                                         <input type="email" className="form-control" onClick={(e) => { enterEmail(e.target.value) }} placeholder="Enter Email" required="" />
                                     </div>
@@ -73,7 +77,7 @@ function Signin() {
                                         <input type="password" className="form-control" onClick={(e) => { enterPassword(e.target.value) }} placeholder="Enter Password" />
                                     </div>
                                     <div className="form-group col-lg-12 mt-3 text-center">
-                                        <button type="submit" onClick={() => { doLogin() }} className="btn btn-primary mt-3">Login</button>
+                                        <button type="submit" onClick={() => { doLogin() }} className="btn btn-primary mt-3">Sign Up</button>
                                     </div>
                                 </div>
                             </div>
@@ -85,4 +89,4 @@ function Signin() {
         </>
     )
 }
-export default Signin;
+export default Signup;

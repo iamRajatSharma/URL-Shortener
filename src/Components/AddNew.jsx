@@ -7,6 +7,7 @@ function AddNew() {
     const ls = localStorage.getItem("users")
     const loggedIn = JSON.parse(ls)
 
+    const [url, updatedURL] = useState();
     const [name, updatedName] = useState();
     const [saveMsg, savedMsg] = useState(false);
     const [msg, setMsg] = useState();
@@ -15,14 +16,17 @@ function AddNew() {
         // if (loggedIn == null) {
         //     navigate("/signin")
         // }
+
     }, [])
 
-    async function saveCategory() {
+    async function save() {
+        let short = new Date()
+        short = +short
         let todayDate = new Date().toJSON()
         todayDate = todayDate.split("T")[0]
-        await fetch("http://localhost:12345/category/save", {
+        await fetch("http://localhost:3333/urls/save", {
             method: "POST",
-            body: JSON.stringify({ name: name, date: todayDate, add_by: loggedIn.email }),
+            body: JSON.stringify({ short: short, name: name, long: url, email: loggedIn.email, date: todayDate }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -59,16 +63,20 @@ function AddNew() {
                         }
                         <div className="card">
                             <div className="card-header">
-                                <strong>Add New Category</strong>
+                                <strong>Create New Shortener URL</strong>
                             </div>
                             <div className="card-body">
                                 <div className="row">
-                                    <div className="form-group col-lg-12">
-                                        <label className="form-label">Category Name</label>
-                                        <input type="text" className="form-control" placeholder="Category Name" onChange={(e) => updatedName(e.target.value)} />
+                                    <div className="form-group col-lg-6">
+                                        <label className="form-label">Enter Name</label>
+                                        <input type="text" className="form-control" placeholder="Enter Name" onChange={(e) => updatedName(e.target.value)} />
+                                    </div>
+                                    <div className="form-group col-lg-6">
+                                        <label className="form-label">Paste/Enter URL</label>
+                                        <input type="text" className="form-control" placeholder="Paste/Enter URL" onChange={(e) => updatedURL(e.target.value)} />
                                     </div>
                                     <div className="form-group col-lg-12 mt-3 text-center">
-                                        <button onClick={() => { saveCategory() }} type="submit" className="btn btn-primary mt-3">Save Category</button>
+                                        <button onClick={() => { save() }} type="submit" className="btn btn-primary mt-3">Create</button>
                                     </div>
                                 </div>
                             </div>

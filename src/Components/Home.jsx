@@ -9,7 +9,7 @@ function Home() {
     const [deleteMessage, deletedMessage] = useState(false);
 
     async function fetchAllData() {
-        await fetch("http://localhost:12345/post/fetchAll")
+        await fetch("http://localhost:3333/urls/fetch")
             .then((resp) => {
                 return resp.json()
             })
@@ -24,11 +24,11 @@ function Home() {
         // if (loggedIn == null) {
         //     navigate("/signin")
         // }
-        // fetchAllData()
+        fetchAllData()
     }, [])
 
     async function deletePost(id) {
-        await fetch(`http://localhost:12345/post/deleteSingle/${id}`, {
+        await fetch(`http://localhost:3333/urls/delete/${id}`, {
             method: "delete",
             headers: {
                 "Content-Type": "application/json"
@@ -46,12 +46,11 @@ function Home() {
 
     async function search(e) {
         console.log(e)
-        await fetch(`http://localhost:12345/post/searchData/${e}`)
+        await fetch(`http://localhost:3333/post/searchData/${e}`)
             .then((resp) => {
                 return resp.json()
             })
             .then((resp) => {
-                console.log(resp)
                 postList(resp)
             })
     }
@@ -60,12 +59,11 @@ function Home() {
         <>
             <div className="container mt-5 mb-5">
                 <div className="row">
-                    <div className="col-lg-1"></div>
-                    <div className="col-lg-10">
+                    <div className="col-lg-12">
                         {
                             deleteMessage ?
                                 <div className="alert alert-success">
-                                    <strong>Post Deleted Successfully. !!!</strong>
+                                    <strong>Record Deleted Successfully. !!!</strong>
                                 </div>
                                 : null
                         }
@@ -75,12 +73,10 @@ function Home() {
                             <thead>
                                 <tr>
                                     <th>S.NO</th>
-                                    <th>Title_Name</th>
-                                    <th>Category_Name</th>
-                                    <th>Tags</th>
-                                    <th>Logo</th>
+                                    <th>Name</th>
+                                    <th>Total_Hits</th>
                                     <th>Added_Date</th>
-                                    <th style={{ width: "175px" }}>Action</th>
+                                    <th style={{ width: "230px" }}>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,15 +85,12 @@ function Home() {
                                         post.map((item, i) =>
                                             <tr key={i}>
                                                 <td>{i + 1}</td>
-                                                <td>{item.title}</td>
-                                                <td>{item.category}</td>
-                                                <td>{item.tags}</td>
+                                                <td>{item.name}</td>
+                                                <td>{item.hits}</td>
+                                                <td>{item.date}</td>
                                                 <td>
-                                                    <img src="https://www.w3schools.com/images/img_powerful_160.png" alt="" style={{ width: "40px", height: "40px" }} />
-                                                </td>
-                                                <td>12/2/2020</td>
-                                                <td>
-                                                    <Link to={"/editPost/" + item._id} className="btn btn-success" style={{ marginRight: "10px" }}>Edit</Link>
+                                                    <Link className="btn btn-info" to={"/redirect/" + item._id} target={"_blank"} style={{ marginRight: "10px" }}>View</Link>
+                                                    <Link to={"/edit/" + item._id} className="btn btn-success" style={{ marginRight: "10px" }}>Edit</Link>
                                                     <button onClick={() => { deletePost(item._id) }} className="btn btn-danger">Delete</button>
                                                 </td>
                                             </tr>
@@ -105,13 +98,11 @@ function Home() {
                                         :
                                         <tr className="text-center">
                                             <td colSpan={7}>NO RECORD FOUND</td>
-
                                         </tr>
                                 }
                             </tbody>
                         </table>
                     </div>
-                    <div className="col-lg-1"></div>
                 </div>
             </div>
         </>
