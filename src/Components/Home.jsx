@@ -19,11 +19,11 @@ function Home() {
     }
 
     useEffect(() => {
-        // const ls = localStorage.getItem("users")
-        // const loggedIn = JSON.parse(ls)
-        // if (loggedIn == null) {
-        //     navigate("/signin")
-        // }
+        const ls = localStorage.getItem("users")
+        const loggedIn = JSON.parse(ls)
+        if (loggedIn == null) {
+            navigate("/signin")
+        }
         fetchAllData()
     }, [])
 

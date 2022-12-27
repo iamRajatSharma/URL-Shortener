@@ -7,8 +7,9 @@ const Users = require("../Model/Users")
 // save user
 router.post("/save", async (req, res) => {
     let data = await Users(req.body)
-    data = await data.save()
+    // data = await data.save()
     res.send(data)
+    // res.send({ msg: "Account created Successfully" })
 })
 
 // login user

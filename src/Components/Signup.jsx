@@ -5,23 +5,16 @@ function Signup() {
 
     const navigate = useNavigate()
 
+    const [name, enterName] = useState();
     const [email, enterEmail] = useState();
     const [password, enterPassword] = useState();
     const [error, errorUpdated] = useState(false);
     const [errorMsg, errorMessage] = useState()
 
-    useEffect(() => {
-        const ls = localStorage.getItem("users")
-        const loggedIn = JSON.parse(ls)
-        if (loggedIn == null) {
-            navigate("/signin")
-        }
-    }, [])
-
-    async function doLogin() {
-        await fetch("http://localhost:3333/users/login", {
+    async function saveUser() {
+        await fetch("http://localhost:3333/users/save", {
             method: "POST",
-            body: JSON.stringify({ email: email, password: password }),
+            body: JSON.stringify({ name: name, email: email, password: password }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -30,18 +23,13 @@ function Signup() {
                 return resp.json()
             })
             .then((resp => {
-                if (resp.name) {
-                    let data = { "email": resp.email, "name": resp.name }
-                    localStorage.setItem("users", JSON.stringify(data))
-                    navigate("/")
-                }
-                else {
-                    errorUpdated(true)
-                    setTimeout(() => {
-                        errorUpdated(false)
-                    }, 5000)
-                    errorMessage(resp.msg)
-                }
+                console.log(resp)
+                errorUpdated(true)
+                setTimeout(() => {
+                    errorUpdated(false)
+                }, 5000)
+                errorMessage(resp.msg)
+
             }))
     }
 
@@ -64,9 +52,9 @@ function Signup() {
                             </div>
                             <div className="card-body">
                                 <div className="row">
-                                <div className="form-group">
+                                    <div className="form-group">
                                         <label className="form-label">Name</label>
-                                        <input type="text" className="form-control" onClick={(e) => { enterEmail(e.target.value) }} placeholder="Enter Name" required="" />
+                                        <input type="text" className="form-control" onClick={(e) => { enterName(e.target.value) }} placeholder="Enter Name" required="" />
                                     </div>
                                     <div className="form-group mt-3">
                                         <label className="form-label">Email</label>
@@ -77,7 +65,7 @@ function Signup() {
                                         <input type="password" className="form-control" onClick={(e) => { enterPassword(e.target.value) }} placeholder="Enter Password" />
                                     </div>
                                     <div className="form-group col-lg-12 mt-3 text-center">
-                                        <button type="submit" onClick={() => { doLogin() }} className="btn btn-primary mt-3">Sign Up</button>
+                                        <button type="submit" onClick={() => { saveUser() }} className="btn btn-primary mt-3">Sign Up</button>
                                     </div>
                                 </div>
                             </div>

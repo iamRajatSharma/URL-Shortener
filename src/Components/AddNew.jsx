@@ -13,9 +13,9 @@ function AddNew() {
     const [msg, setMsg] = useState();
 
     useEffect(() => {
-        // if (loggedIn == null) {
-        //     navigate("/signin")
-        // }
+        if (loggedIn == null) {
+            navigate("/signin")
+        }
 
     }, [])
 

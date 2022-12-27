@@ -28,11 +28,16 @@ function Header() {
                         </ul>
                         {
                             !loggedIn ?
-                                <ul className="navbar-nav" style={{ position: "absolute", right: " 10px" }}>
-                                    <li className="nav-item">
-                                        <Link className="nav-link text-white" to="/signin">Sign In</Link>
-                                    </li>
-                                </ul>
+                                <>
+                                    <ul className="navbar-nav" style={{ position: "absolute", right: " 10px" }}>
+                                        <li className="nav-item">
+                                            <Link className="nav-link text-white" to="/signin">Sign In</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link className="nav-link text-white" to="/signup">Sign Up</Link>
+                                        </li>
+                                    </ul>
+                                </>
                                 :
                                 <ul className="navbar-nav" style={{ position: "absolute", right: " 10px" }}>
                                     <li className="nav-item">
