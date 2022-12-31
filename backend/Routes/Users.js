@@ -1,4 +1,5 @@
 const express = require("express")
+const Joi = require("joi")
 const router = express.Router()
 require("dotenv").config()
 require("../DB/Conn")
@@ -14,9 +15,10 @@ router.post("/save", async (req, res) => {
 
 // login user
 router.post("/login", async (req, res) => {
+    let { email, password } = req.body
     let data = await Users.findOne({ email: "admin@blog.in" })
     if (data) {
-        if (data.password == "12345") {
+        if (data.password == 12345) {
             res.send(data)
         }
         else {

@@ -35,6 +35,7 @@ function AddNew() {
                 return resp.json()
             })
             .then((resp) => {
+                console.log(resp)
                 setMsg(resp)
                 savedMsg(true)
                 setTimeout(() => {

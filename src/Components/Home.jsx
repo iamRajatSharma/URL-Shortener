@@ -74,6 +74,7 @@ function Home() {
                                 <tr>
                                     <th>S.NO</th>
                                     <th>Name</th>
+                                    <th>Shortenr_url</th>
                                     <th>Total_Hits</th>
                                     <th>Added_Date</th>
                                     <th style={{ width: "230px" }}>Action</th>
@@ -86,6 +87,7 @@ function Home() {
                                             <tr key={i}>
                                                 <td>{i + 1}</td>
                                                 <td>{item.name}</td>
+                                                <td>{item.short}</td>
                                                 <td>{item.hits}</td>
                                                 <td>{item.date}</td>
                                                 <td>

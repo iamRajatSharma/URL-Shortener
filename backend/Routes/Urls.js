@@ -8,7 +8,12 @@ const Urls = require("../Model/Urls")
 router.post("/save", async (req, res) => {
     let data = await Urls(req.body)
     data = await data.save()
-    res.send(req.body)
+    if (data) {
+        res.send({ data, "msg": "Record Saved Successfully", flag: 0 })
+    }
+    else {
+        res.send({ "msg": "Something Went Wrong", flag: 1 })
+    }
 })
 
 // fetch all urls
