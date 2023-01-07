@@ -19,9 +19,10 @@ function Signin() {
     }, [])
 
     async function doLogin() {
+        console.log(email, password)
         await fetch("http://localhost:3333/users/login", {
             method: "POST",
-            body: JSON.stringify({ email: email, password: password }),
+            body: JSON.stringify({ "email": email, "password": password }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -66,11 +67,11 @@ function Signin() {
                                 <div className="row">
                                     <div className="form-group">
                                         <label className="form-label">Email</label>
-                                        <input type="email" className="form-control" onClick={(e) => { enterEmail(e.target.value) }} placeholder="Enter Email" required="" />
+                                        <input type="email" className="form-control" onChange={(e) => { enterEmail(e.target.value) }} placeholder="Enter Email" required="" />
                                     </div>
                                     <div className="form-group col-lg-12 mt-3">
                                         <label className="form-label">Password</label>
-                                        <input type="password" className="form-control" onClick={(e) => { enterPassword(e.target.value) }} placeholder="Enter Password" />
+                                        <input type="text" className="form-control" onChange={(e) => { enterPassword(e.target.value) }} placeholder="Enter Password" />
                                     </div>
                                     <div className="form-group col-lg-12 mt-3 text-center">
                                         <button type="submit" onClick={() => { doLogin() }} className="btn btn-primary mt-3">Login</button>

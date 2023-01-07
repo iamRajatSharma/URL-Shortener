@@ -15,10 +15,12 @@ router.post("/save", async (req, res) => {
 
 // login user
 router.post("/login", async (req, res) => {
-    let { email, password } = req.body
-    let data = await Users.findOne({ email: "admin@blog.in" })
+    let email = req.body.email
+    let password= req.body.password
+    let data = await Users.findOne({ email: email })
     if (data) {
-        if (data.password == 12345) {
+        
+        if (data.password == password) {
             res.send(data)
         }
         else {
