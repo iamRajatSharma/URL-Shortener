@@ -6,11 +6,11 @@
 git clone https://github.com/iamRajatSharma/URL-Shortener.git <br/>
 cd ./URL-Shortener<br/>
 
-### `Start Fronted`
+### `Start Frontend`
 npm install<br/>
 npm start<br/>
 
-### `Start Backedn`
+### `Start Backend`
 cd ./backend/ <br/>
 npm install<br/>
 npm start<br/>
