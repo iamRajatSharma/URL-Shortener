@@ -1,17 +1,20 @@
-# Getting Started with Create React App
+# URL Shortener using React and Node
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `How to install`
+## `How to install`
 
 git clone https://github.com/iamRajatSharma/URL-Shortener.git <br/>
 cd ./URL-Shortener<br/>
-npm update<br/>
+
+### `Start Fronted`
+npm install<br/>
 npm start<br/>
+
+### `Start Backedn`
+cd ./backedn/
+npm install<br/>
+npm start<br/>
+
 Runs the app in the development mode.<br/>
 Open http://localhost:3000 to view it in your browser.<br/>
 
