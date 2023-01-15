@@ -17,7 +17,6 @@ function App() {
                 <Route path="/add" element={<AddNew />} />
                 <Route path="/edit/:id" element={<Edit />} />
                 <Route path="/redirect/:id" element={<Redirect />} />
-
                 <Route path="/signin" element={<Signin />} />
                 <Route path="/signup" element={<Signup />} />
             </Routes>

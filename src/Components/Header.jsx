@@ -7,6 +7,7 @@ function Header() {
 
     function logout() {
         localStorage.clear()
+        window.location.href = '/signin'
     }
 
     return (
@@ -39,7 +40,7 @@ function Header() {
                                 :
                                 <ul className="navbar-nav" style={{ position: "absolute", right: " 10px" }}>
                                     <li className="nav-item">
-                                        <Link className="nav-link text-white" onClick={() => { logout() }} to="/signin">Logout</Link>
+                                        <Link className="nav-link text-white" onClick={() => { logout() }}>Logout</Link>
                                     </li>
                                 </ul>
                         }

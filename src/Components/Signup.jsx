@@ -23,7 +23,6 @@ function Signup() {
                 return resp.json()
             })
             .then((resp => {
-                console.log(resp)
                 errorUpdated(true)
                 setTimeout(() => {
                     errorUpdated(false)

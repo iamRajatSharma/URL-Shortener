@@ -43,18 +43,6 @@ function Home() {
             })
     }
 
-
-    async function search(e) {
-        console.log(e)
-        await fetch(`http://localhost:3333/post/searchData/${e}`)
-            .then((resp) => {
-                return resp.json()
-            })
-            .then((resp) => {
-                postList(resp)
-            })
-    }
-
     return (
         <>
             <div className="container mt-5 mb-5">
@@ -67,8 +55,6 @@ function Home() {
                                 </div>
                                 : null
                         }
-                        <input onChange={(e) => { search(e.target.value) }} type="text" className="form-control mb-4" placeholder="Search Post by Name, Category, Tags ...." />
-
                         <table className="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>

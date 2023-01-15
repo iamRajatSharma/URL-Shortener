@@ -34,7 +34,7 @@ function Signin() {
                 if (resp.name) {
                     let data = { "email": resp.email, "name": resp.name }
                     localStorage.setItem("users", JSON.stringify(data))
-                    navigate("/")
+                    window.location.href = '/'
                 }
                 else {
                     errorUpdated(true)
