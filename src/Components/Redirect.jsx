@@ -11,19 +11,12 @@ function Redirect() {
                 return resp.json()
             })
             .then((resp) => {
-                console.log(resp)
                 const redirect_to = resp.long;
-                // console.log(redirect_to)
                 window.location.href = redirect_to;
             })
     }
 
     useEffect(() => {
-        // const ls = localStorage.getItem("users")
-        // const loggedIn = JSON.parse(ls)
-        // if (loggedIn == null) {
-        //     navigate("/signin")
-        // }
         singleData()
     }, [])
 
