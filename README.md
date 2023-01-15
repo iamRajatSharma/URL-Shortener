@@ -11,7 +11,7 @@ npm install<br/>
 npm start<br/>
 
 ### `Start Backedn`
-cd ./backedn/
+cd ./backend/ <br/>
 npm install<br/>
 npm start<br/>
 
