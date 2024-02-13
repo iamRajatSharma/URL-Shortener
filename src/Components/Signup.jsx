@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
 function Signup() {
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const [name, enterName] = useState();
     const [email, enterEmail] = useState();
@@ -12,6 +12,8 @@ function Signup() {
     const [errorMsg, errorMessage] = useState()
 
     async function saveUser() {
+        // const check = { name: name, email: email, password: password }
+
         await fetch("http://localhost:3333/users/save", {
             method: "POST",
             body: JSON.stringify({ name: name, email: email, password: password }),
@@ -28,7 +30,6 @@ function Signup() {
                     errorUpdated(false)
                 }, 5000)
                 errorMessage(resp.msg)
-
             }))
     }
 
@@ -53,15 +54,15 @@ function Signup() {
                                 <div className="row">
                                     <div className="form-group">
                                         <label className="form-label">Name</label>
-                                        <input type="text" className="form-control" onClick={(e) => { enterName(e.target.value) }} placeholder="Enter Name" required="" />
+                                        <input type="text" className="form-control" defaultValue={name} onClick={(e) => { enterName(e.target.value) }} placeholder="Enter Name" required="" />
                                     </div>
                                     <div className="form-group mt-3">
                                         <label className="form-label">Email</label>
-                                        <input type="email" className="form-control" onClick={(e) => { enterEmail(e.target.value) }} placeholder="Enter Email" required="" />
+                                        <input type="email" className="form-control" defaultValue={email} onClick={(e) => { enterEmail(e.target.value) }} placeholder="Enter Email" required="" />
                                     </div>
                                     <div className="form-group col-lg-12 mt-3">
                                         <label className="form-label">Password</label>
-                                        <input type="password" className="form-control" onClick={(e) => { enterPassword(e.target.value) }} placeholder="Enter Password" />
+                                        <input type="password" className="form-control" defaultValue={password} onClick={(e) => { enterPassword(e.target.value) }} placeholder="Enter Password" />
                                     </div>
                                     <div className="form-group col-lg-12 mt-3 text-center">
                                         <button type="submit" onClick={() => { saveUser() }} className="btn btn-primary mt-3">Sign Up</button>

@@ -1,13 +1,19 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Header() {
 
     const ls = localStorage.getItem("users")
-    const loggedIn = JSON.parse(ls)
+    var loggedIn = JSON.parse(ls)
+    const [user, updateUser] = useState(false);
+
+    useEffect(()=>{
+        loggedIn = localStorage.getItem("user");
+    }, [])
 
     function logout() {
         localStorage.clear()
-        window.location.href = '/signin'
+        // window.location.href = '/signin'
     }
 
     return (
@@ -19,14 +25,18 @@ function Header() {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="collapsibleNavbar">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link text-white" to="/">Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link text-white" to="/add">Create New Shortener URL</Link>
-                            </li>
-                        </ul>
+                        {
+                            loggedIn ?
+                                <ul className="navbar-nav">
+                                    <li className="nav-item">
+                                        <Link className="nav-link text-white" to="/">Home</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link text-white" to="/add">Create New Shortener URL</Link>
+                                    </li>
+                                </ul>
+                                : ''
+                        }
                         {
                             !loggedIn ?
                                 <ul className="navbar-nav" style={{ position: "absolute", right: " 10px" }}>

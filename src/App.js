@@ -7,6 +7,7 @@ import Edit from './Components/Edit';
 import Signin from './Components/Signin';
 import Signup from './Components/Signup';
 import Redirect from './Components/Redirect';
+import { PageNotFound } from './Components/PageNotFound';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/redirect/:id" element={<Redirect />} />
                 <Route path="/signin" element={<Signin />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="*" element={<PageNotFound />} />
             </Routes>
             <Footer />
         </BrowserRouter>

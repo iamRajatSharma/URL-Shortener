@@ -16,7 +16,6 @@ function AddNew() {
         if (loggedIn == null) {
             navigate("/signin")
         }
-
     }, [])
 
     async function save() {
@@ -35,7 +34,8 @@ function AddNew() {
                 return resp.json()
             })
             .then((resp) => {
-                console.log(resp)
+                updatedName('')
+                updatedURL('')
                 setMsg(resp)
                 savedMsg(true)
                 setTimeout(() => {
@@ -70,11 +70,11 @@ function AddNew() {
                                 <div className="row">
                                     <div className="form-group col-lg-6">
                                         <label className="form-label">Enter Name</label>
-                                        <input type="text" className="form-control" placeholder="Enter Name" onChange={(e) => updatedName(e.target.value)} />
+                                        <input type="text" className="form-control" placeholder="Enter Name" defaultValue={name} value={name} onChange={(e) => updatedName(e.target.value)} />
                                     </div>
                                     <div className="form-group col-lg-6">
                                         <label className="form-label">Paste/Enter URL</label>
-                                        <input type="text" className="form-control" placeholder="Paste/Enter URL" onChange={(e) => updatedURL(e.target.value)} />
+                                        <input type="text" className="form-control" placeholder="Paste/Enter URL" defaultValue={url} value={url} onChange={(e) => updatedURL(e.target.value)} />
                                     </div>
                                     <div className="form-group col-lg-12 mt-3 text-center">
                                         <button onClick={() => { save() }} type="submit" className="btn btn-primary mt-3">Create</button>
