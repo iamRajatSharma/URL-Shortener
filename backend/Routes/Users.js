@@ -18,7 +18,7 @@ router.post("/save", async (req, res) => {
             return res.send({ msg: "Email is already exists" })
         }
         let data = await Users(user)
-        console.log(data);
+
         if (data.save()) {
             return res.send({ msg: "Account Created Successfully" })
         }
