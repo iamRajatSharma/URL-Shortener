@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 function Signin() {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const [email, enterEmail] = useState();
     const [password, enterPassword] = useState();
@@ -14,7 +15,7 @@ function Signin() {
         const ls = localStorage.getItem("users")
         const loggedIn = JSON.parse(ls)
         if (loggedIn != null) {
-            navigate("/")
+            navigate("/add")
         }
     }, [])
 
@@ -33,8 +34,7 @@ function Signin() {
                 if (resp.name) {
                     let data = { "email": resp.email, "name": resp.name }
                     localStorage.setItem("users", JSON.stringify(data))
-                    // window.location.href = '/'
-                    navigate("/")
+                    navigate("/add")
                 }
                 else {
                     enterEmail('')
@@ -50,6 +50,7 @@ function Signin() {
 
     return (
         <>
+        <Header />
             <div className="container mt-5 mb-5">
                 <div className="row">
                     <div className="col-lg-4"></div>

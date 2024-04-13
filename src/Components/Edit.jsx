@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 function Edit() {
 
@@ -52,6 +53,7 @@ function Edit() {
 
     return (
         <>
+        <Header />
             <div className="container mt-5 mb-5">
                 <div className="row">
                     <div className="col-lg-2"></div>

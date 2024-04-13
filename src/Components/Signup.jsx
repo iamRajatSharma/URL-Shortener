@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Header from "./Header";
 // import { useNavigate } from "react-router-dom";
 
 function Signup() {
@@ -35,6 +36,7 @@ function Signup() {
 
     return (
         <>
+        <Header />
             <div className="container mt-5 mb-5">
                 <div className="row">
                     <div className="col-lg-4"></div>

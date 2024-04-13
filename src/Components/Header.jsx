@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
-
+    const navigate = useNavigate();
     const ls = localStorage.getItem("users")
     var loggedIn = JSON.parse(ls)
-    const [user, updateUser] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         loggedIn = localStorage.getItem("user");
-    }, [])
+    }, [loggedIn])
 
     function logout() {
         localStorage.clear()
-        // window.location.href = '/signin'
+        window.location.href = 'signin'
+        console.log('logout')
     }
 
     return (
