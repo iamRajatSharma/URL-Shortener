@@ -15,7 +15,7 @@ function Signup() {
     async function saveUser() {
         // const check = { name: name, email: email, password: password }
 
-        await fetch("http://localhost:3333/users/save", {
+        await fetch("https://url-backend-nine.vercel.app/users/save", {
             method: "POST",
             body: JSON.stringify({ name: name, email: email, password: password }),
             headers: {
