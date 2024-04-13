@@ -20,7 +20,7 @@ function Signin() {
     }, [])
 
     async function doLogin() {
-        await fetch("http://localhost:3333/users/login", {
+        await fetch("https://url-backend-nine.vercel.app/users/login", {
             method: "POST",
             body: JSON.stringify({ "email": email, "password": password }),
             headers: {
